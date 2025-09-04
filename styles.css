@@ -1,0 +1,73 @@
+/* Base de estilos simples e responsiva */
+/* ALTERAÇÃO: Paleta, tipografia e layout próprios do projeto */
+:root {
+  --bg: #0c1116;
+  --fg: #e6edf3;
+  --muted: #9aa4ae;
+  --brand: #3fb950;
+  --surface: #151b23;
+  --border: #2d333b;
+  --focus: #58a6ff;
+}
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header, .site-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem; background: var(--surface); border-bottom: 1px solid var(--border);
+}
+.site-footer { border-top: 1px solid var(--border); border-bottom: none; }
+.logo { display:flex; align-items:center; gap:.5rem; font-weight:700; color: var(--fg); }
+.site-nav ul { list-style:none; display:flex; gap:1rem; margin:0; padding:0; }
+.site-nav a { padding:.5rem .75rem; border-radius: .5rem; }
+.site-nav a.active, .site-nav a:focus { outline: none; background: var(--border); }
+.menu-toggle { display:none; background:none; border:1px solid var(--border); color: var(--fg); padding:.5rem .75rem; border-radius:.5rem; }
+
+main { padding: 1.5rem; max-width: 1100px; margin: 0 auto; }
+
+.hero { position: relative; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.hero-img { width:100%; height: 320px; object-fit: cover; border-radius: 1rem; }
+.hero-text { margin-top: .5rem; }
+.hero h1 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin: 0 0 .5rem; }
+.btn { display:inline-block; padding:.75rem 1rem; background: var(--brand); color:#0b1512; font-weight:700; border-radius:.75rem; border:0; }
+.btn:hover { filter: brightness(0.95); text-decoration: none; }
+
+.features ul { padding-left: 1.25rem; }
+.features li { margin:.25rem 0; }
+
+.table-wrap { overflow-x:auto; border:1px solid var(--border); border-radius: .75rem; }
+table { width:100%; border-collapse: collapse; min-width: 480px; }
+caption { text-align: left; padding: .75rem; color: var(--muted); }
+th, td { padding:.75rem; border-top:1px solid var(--border); }
+thead th { background: #0f1620; text-align: left; }
+tfoot th { text-align: left; }
+
+.page h1 { margin-top:0; }
+.sign-box { margin-top:2rem; padding:1rem; border:1px dashed var(--border); border-radius:.75rem; background: #0f1620; }
+
+/* Formulário */
+.form { max-width: 640px; }
+.form-row { display:flex; flex-direction:column; gap:.5rem; margin-bottom:1rem; }
+input, select, textarea { background:#0f1620; color:var(--fg); border:1px solid var(--border); padding:.75rem; border-radius:.5rem; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--focus); border-color: transparent; }
+.error { color: #ff7b72; min-height: 1.25rem; }
+.form-ok { margin-top:.75rem; color: var(--brand); min-height: 1.25rem; }
+
+.social { list-style:none; display:flex; gap:.75rem; margin:0; padding:0; }
+.social a { color: var(--muted); }
+
+/* Responsivo */
+@media (max-width: 760px) {
+  .menu-toggle { display:block; }
+  .site-nav { display:none; }
+  .site-nav.open { display:block; position:absolute; top:64px; right:16px; background: var(--surface); border:1px solid var(--border); border-radius:.75rem; }
+  .site-nav ul { flex-direction: column; gap:.25rem; padding:.5rem; }
+}
